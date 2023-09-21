@@ -14,25 +14,14 @@ public class Business
      */
     public static void downsize(LinkedList<String> employeeNames, int n)
     {
-        ListIterator <String> iterator = employeeNames.listIterator();
-        int counter = 0;
+        ListIterator iter;
 
-        while(iterator.hasNext()){
-            if( counter == n-1){
-                iterator.n
-
-                iterator.remove();
-                counter = 0;
-            }
-            counter++;
-            }
-
-        System.out.print(employeeNames);
-
-
-
-
-
+        for (int i = n-1; i < employeeNames.size(); i += 1)
+        {
+            iter = employeeNames.listIterator(i);
+            iter.next();
+            iter.remove();
+        }
 
     }
 }
