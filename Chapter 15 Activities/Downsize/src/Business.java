@@ -23,5 +23,14 @@ public class Business
             iter.remove();
         }
 
+
+        /**
+         *  int counter = 1;
+         * while(it.hasNext())
+         * 
+         * 
+         * 
+         */
+
     }
 }

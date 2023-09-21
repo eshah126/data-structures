@@ -28,6 +28,16 @@ public class ListUtil
 
              
         }
+
+        /**
+         * for (int i = 0; i < strings.size()/2; i++){
+         * String x = forward.next();
+         * forward.set(backward.prevois)
+         * backward.set(x);
+         * 
+         * 
+         * }
+         */
        
 
 
