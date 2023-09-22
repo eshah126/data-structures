@@ -36,10 +36,10 @@ public class SudokuSolver {
         }
 
         // create the list of sets for each row (this.rows)
-        // ...
+        ArrayList row = new ArrayList<Set>(rows);
 
         // create the list of sets for each col (this.cols)
-        // ...
+    
 
         // create the list of sets for each square (this.squares)
         /* the squares are added to the list row-by-row:
