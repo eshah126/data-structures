@@ -2,8 +2,9 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
+import java.util.Iterator;
 
+import java.util.*;
 
 /**
  * A program that implements the sieve of Eratosthenes.
@@ -24,9 +25,28 @@ public class Sieve
             numSet.add(new Integer(i));
         }
 
+        
         for(int i = 2; i <= n; i++){
-            Iterator iterator = numSet.Iterator();
+            Iterator<Integer> iterator = numSet.iterator();
+            while (iterator.hasNext())
+            {
+                int num = iterator.next().intValue();
+                if (num % i == 0 && num / i != 1)
+                {
+                    iterator.remove();
+                }
+            }
         }
+
+        System.out.println("The prime numbers up to " + n + "are: ");
+        Iterator<Integer> iterator = numSet.iterator();
+            while (iterator.hasNext())
+            {
+                System.out.println(iterator.next());
+            }
+
+
+
 
         // Your work goes here
         
