@@ -36,12 +36,14 @@ public class SudokuSolver {
         }
 
         // create the list of sets for each row (this.rows)
-        ArrayList row = new ArrayList<Set>(rows);
+        ArrayList row = new ArrayList<Set>(this.rows);
 
         // create the list of sets for each col (this.cols)
+        ArrayList col = new ArrayList<Set>(this.cols);
     
 
         // create the list of sets for each square (this.squares)
+        ArrayList squares = new ArrayList<Set>(this.squares);
         /* the squares are added to the list row-by-row:
             0 1 2
             3 4 5
@@ -51,6 +53,7 @@ public class SudokuSolver {
 
         // create a hash set for [1..9] (this.nums)
         // ...
+        Set num = new HashSet<>(nums);
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) {
@@ -94,6 +97,20 @@ public class SudokuSolver {
             Properly indexing the squares list of sets is tricky. Verify that your
             algorithm is correct.
          */
+        
+        
+
+        //go through and find the column and row that match the next the next col and row 
+        Set<Integer> possibleNums = new HashSet<Integer>();
+        possibleNums.addAll(this.nums);
+        
+        
+        removeAll 
+        
+
+
+
+
         Set<Integer> possibleNums = new HashSet<Integer>();
         possibleNums.addAll(this.nums);
         
@@ -108,6 +125,8 @@ public class SudokuSolver {
         for (Integer possibleNum : possibleNums) {
             // update the grid and all three corresponding sets with possibleNum
             // ...
+            //put number in, change that spot in the grid
+            //recursvly 
 
             // recursively solve the board
             if (this.solve()) {
