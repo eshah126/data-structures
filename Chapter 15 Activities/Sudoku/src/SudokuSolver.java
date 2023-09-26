@@ -34,16 +34,24 @@ public class SudokuSolver {
         } catch (FileNotFoundException e) {
             System.out.println("Cannot open: " + fileName);
         }
+        //make a blank set
 
         // create the list of sets for each row (this.rows)
-        ArrayList row = new ArrayList<Set>(this.rows);
+        for(int c = 0; c < grid[1].length; c++)
+        for(int r = 0; r < grid.length; r++){
+            rows.add(grid[c][r]);
+
+
+        }
+
+           
 
         // create the list of sets for each col (this.cols)
-        ArrayList col = new ArrayList<Set>(this.cols);
+        ArrayList colArr = new ArrayList<Set>(this.cols);
     
 
         // create the list of sets for each square (this.squares)
-        ArrayList squares = new ArrayList<Set>(this.squares);
+        ArrayList squaresArr = new ArrayList<Set>(this.squares);
         /* the squares are added to the list row-by-row:
             0 1 2
             3 4 5
@@ -103,16 +111,23 @@ public class SudokuSolver {
         //go through and find the column and row that match the next the next col and row 
         Set<Integer> possibleNums = new HashSet<Integer>();
         possibleNums.addAll(this.nums);
+
+
+        possibleNums.removeAll(this.rows.get(nextRow));
+        possibleNums.removeAll(this.cols.get(nextCol));
+        possibleNums.removeAll(this.squares.get(nextRow));
+
+
+
+
+         
+
+
+
+
+
+
         
-        
-        removeAll 
-        
-
-
-
-
-        Set<Integer> possibleNums = new HashSet<Integer>();
-        possibleNums.addAll(this.nums);
         
         // ...
 
@@ -128,6 +143,9 @@ public class SudokuSolver {
             //put number in, change that spot in the grid
             //recursvly 
 
+
+            grid[nextRow][nextCol] = possibleNum;
+
             // recursively solve the board
             if (this.solve()) {
                 // the board is solved!
@@ -139,6 +157,11 @@ public class SudokuSolver {
                  sets.
                  */
                 // ...
+                grid[nextRow][nextCol] = 0;
+                rows.remove(possibleNum);
+                cols.remove(possibleNum);
+                squares.remove(possibleNum);
+
             }
         }
 
