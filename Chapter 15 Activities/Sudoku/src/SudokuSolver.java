@@ -1,6 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
 
 public class SudokuSolver {
     private final int M = 3;
@@ -34,34 +38,67 @@ public class SudokuSolver {
         } catch (FileNotFoundException e) {
             System.out.println("Cannot open: " + fileName);
         }
-        //make a blank set
 
         // create the list of sets for each row (this.rows)
-        for(int c = 0; c < grid[1].length; c++)
-        for(int r = 0; r < grid.length; r++){
-            rows.add(grid[c][r]);
+        this.rows = new ArrayList<Set<Integer>>();
 
+        for (int r = 0; r < N; r++)
+        {
+            Set<Integer> row = new HashSet<Integer>();
 
+            for(int c = 0; c < N; c++)
+                row.add(grid[r][c]);
+
+            this.rows.add(row);
         }
 
-           
 
         // create the list of sets for each col (this.cols)
-        ArrayList colArr = new ArrayList<Set>(this.cols);
-    
+        this.cols = new ArrayList<Set<Integer>>();
 
-        // create the list of sets for each square (this.squares)
-        ArrayList squaresArr = new ArrayList<Set>(this.squares);
-        /* the squares are added to the list row-by-row:
+        for (int r = 0; r < N; r++)
+        {
+            Set<Integer> col = new HashSet<Integer>();
+
+            for (int c = 0; c < N; c++)
+                col.add(grid[c][r]);
+
+            this.cols.add(col);
+        }
+
+        /* create the list of sets for each square (this.squares)
+           the squares are added to the list row-by-row:
             0 1 2
             3 4 5
             6 7 8
-         */
-        // ...
+        */
+        this.squares = new ArrayList<Set<Integer>>();
+        int ctr = 0, ctc = 0;
+
+        // 9 sqr total
+        for (int num = 0; num < N; num++)
+        {
+            ctr = num/3 * 3;
+            Set<Integer> square = new HashSet<>();
+
+           
+            for (int r = ctr; r < ctr + M; r++)
+                for (int c = ctc; c < ctc + M; c++)
+                    square.add(grid[r][c]);
+
+            this.squares.add(square);
+
+            //staring loc for C
+            ctc += 3;
+
+            if (ctc > 8)
+                ctc = 0;
+        }
 
         // create a hash set for [1..9] (this.nums)
-        // ...
-        Set num = new HashSet<>(nums);
+        this.nums = new HashSet<Integer>();
+        for (int i = 1; i < 10; i++)
+            this.nums.add(i);
 
         // visually inspect that all the sets are correct
         for (int row = 0; row < N; row++) {
@@ -105,31 +142,27 @@ public class SudokuSolver {
             Properly indexing the squares list of sets is tricky. Verify that your
             algorithm is correct.
          */
-        
-        
-
-        //go through and find the column and row that match the next the next col and row 
-        Set<Integer> possibleNums = new HashSet<Integer>();
-        possibleNums.addAll(this.nums);
 
 
-        possibleNums.removeAll(this.rows.get(nextRow));
+      
+        Set<Integer> possibleNums = new HashSet<Integer>();//makes a set to add
+        possibleNums.addAll(this.nums);//adds all
+      int nextSquare = (nextRow - nextRow % M) + nextCol/M;// to get square with have to divide the row and col by 3
+
+       possibleNums.removeAll(this.rows.get(nextRow));
         possibleNums.removeAll(this.cols.get(nextCol));
-        possibleNums.removeAll(this.squares.get(nextRow));
+        possibleNums.removeAll(this.squares.get(nextSquare));
 
+        
 
-
-
-         
-
-
-
-
+        
+        Set<Integer> row = this.rows.get(nextRow);
+        Set<Integer> col = this.cols.get(nextCol);
+        Set<Integer> square = this.squares.get(nextSquare);
 
 
         
         
-        // ...
 
         // if there are no possible numbers, we cannot solve the board in its current state
         if (possibleNums.isEmpty()) {
@@ -139,12 +172,12 @@ public class SudokuSolver {
         // try each possible number
         for (Integer possibleNum : possibleNums) {
             // update the grid and all three corresponding sets with possibleNum
-            // ...
-            //put number in, change that spot in the grid
-            //recursvly 
-
-
             grid[nextRow][nextCol] = possibleNum;
+
+            row.add(possibleNum);
+            col.add(possibleNum);
+            square.add(possibleNum);
+            // 
 
             // recursively solve the board
             if (this.solve()) {
@@ -156,12 +189,12 @@ public class SudokuSolver {
                  element in the grid back to 0 and removing possibleNum from all three corresponding
                  sets.
                  */
-                // ...
                 grid[nextRow][nextCol] = 0;
-                rows.remove(possibleNum);
-                cols.remove(possibleNum);
-                squares.remove(possibleNum);
 
+                row.remove(possibleNum);
+                col.remove(possibleNum);
+                square.remove(possibleNum);
+                //removes it 
             }
         }
 
@@ -183,7 +216,7 @@ public class SudokuSolver {
     }
 
     public static void main(String[] args) {
-        String fileName = "src/puzzle1.txt";
+        String fileName = "Chapter 15 Activities/Sudoku/src/puzzle1.txt";
 
         SudokuSolver solver = new SudokuSolver(fileName);
         System.out.println(solver);
