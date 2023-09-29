@@ -28,10 +28,11 @@ public class Gradebook
             } else if (input.equals("A"))
             {
                 System.out.println("What is the student's name");
-                String name = in.nextLine();
+                String name = in.next
+                ();
                 System.out.println();
                 System.out.println("What is the student's grade");
-                String grade = in.nextLine();
+                String grade = in.next();
                 gradebook.put(name, grade);
                 
 
@@ -47,9 +48,9 @@ public class Gradebook
             } else if (input.equals("M"))
             {
                 System.out.println("What students grade do you want to modify?");
-                String name = in.nextLine();
+                String name = in.next();
                 System.out.println("What is the student's  new grade?");
-                String Newgrade = in.nextLine();
+                String Newgrade = in.next();
                 gradebook.put(name, Newgrade);
 
 
