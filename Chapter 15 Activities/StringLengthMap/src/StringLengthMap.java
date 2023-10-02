@@ -1,25 +1,16 @@
 import java.util.*;
 import java.io.*;
-/**
- * Read all words from a file and add them to a
- * map whose keys are word lengths and whose values
- * are comma-separated strings of words of the same length.
- * Then print out those strings, in increasing order by
- * the length of their entries.
- * Modify Worked Example 15.1.
- */
+
+
 public class StringLengthMap
 {
     public static void main(String[] args) throws FileNotFoundException
     {
-        String filename = "C:\\Users\\eshah\\Desktop\\GithubSE1\\data-structures\\Chapter 15 Activities\\StringLengthMap\\src\\test1.txt";
-
+        String filename = "C:\Users\eshah\Desktop\GithubSE1\data-structures\Chapter 15 Activities\StringLengthMap\src\test1.txt";
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            Map<Integer, String> treeMap = new TreeMap<>();            
-            
+            Map<Integer, String> lens = new TreeMap<>();
 
             while (in.hasNext())
             {
@@ -28,25 +19,24 @@ public class StringLengthMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                if(filename.contains(word) && word.length() == len){
-                    treeMap.put(len,word);
-            
+                
+                String words = lens.get(len);
+
+                if (words == null) words = word;
+                else {
+                    words = words + ", " + word;
                 }
 
-
-
-
-
-
-                
-
+                lens.put(len, words);
 
             }
 
             // Print the strings, in increasing order of their length
             // Use this format: 1: i, a, i
 
-            System.out.print(treeMap);
+            for (int key : lens.keySet()){
+                System.out.println(key + ": " + lens.get(key));
+            }
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
