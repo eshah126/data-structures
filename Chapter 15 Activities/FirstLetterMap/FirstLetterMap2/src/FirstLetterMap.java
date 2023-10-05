@@ -1,24 +1,13 @@
-import java.util.*;
-import java.io.*;
-/**
- * Read all words from a file and add them to a map
- * whose keys are the first letters of the words and
- * whose values are sets of words that start with
- * that same letter. Then print out the word sets in
- * alphabetical order. Update the map by modifying
- * Worked Example 15.1.
-*/
 public class FirstLetterMap
 {
     public static void main(String[] args)
     {
-        String filename = "src/test1.txt";
+        String filename = "Chapter 15 Activities\FirstLetterMap\FirstLetterMap2\src\test1.txt";
 
         try (Scanner in = new Scanner(new File(filename)))
         {
 
-            // Create your map here
-            ...
+            Map<Character, Set<String>> firstLetters = new TreeMap<>();
 
             while (in.hasNext())
             {
@@ -27,14 +16,27 @@ public class FirstLetterMap
 
                 // Update the map here
                 // Modify Worked Example 15.1
-                . . .
+                
+                Set<String> words = firstLetters.get(c);
 
-
+                if (words == null){
+                    words = new TreeSet<>();
+                    words.add(word);
+                    firstLetters.put(c, words);
+                }
+                else {
+                    words.add(word);
+                    firstLetters.put(c, words);
+                }
             }
 
             // Print the map here in this form
             // a: [a, able, aardvark]
-            . . .
+            
+            for (Character key : firstLetters.keySet()){
+                System.out.println(key + ": " + firstLetters.get(key));
+            }
+
         } catch (FileNotFoundException e)
         {
             System.out.println("Cannot open: " + filename);
