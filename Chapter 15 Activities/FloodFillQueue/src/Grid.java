@@ -24,7 +24,7 @@ public class Grid
         if(pixels[removed.getRow()][removed.getColumn()] ==0){
           pixels[removed.getRow()][removed.getColumn()] = fill;
           //if 0, will fill in with fill num
-          //how to push 
+         
 
           
         }
