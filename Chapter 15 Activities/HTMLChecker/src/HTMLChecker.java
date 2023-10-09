@@ -22,7 +22,21 @@ public class HTMLChecker
 
         try (Scanner in = new Scanner(new File(filename)))
         {
-            // Your code goes here
+            //Make a stack
+            Stack<String> htmlTags = new Stack<>();
+            //add the tags 
+            while(filename.hasNext()){
+              htmlTags.push(filename.next());
+            }
+           while(htmlTags.size()>0){
+             if(htmlTags.pop)
+
+             
+           }
+          
+          
+
+           
             
 
 
