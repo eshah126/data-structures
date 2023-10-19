@@ -12,6 +12,7 @@ public class LinkedList
      * if the list is empty,first will be null
      */
     private Node first;
+    public int count;
 
 
 
@@ -222,6 +223,49 @@ public class LinkedList
 
             }
         }
+        public int size(){
+            while(hasNext()){
+                count++;
+            }
+
+
+
+            return count;
+        }
+
+
+        private static int size(Node start){
+            int size1 = 0;
+            if(start != null){
+                size1 = start.next();
+                size(size1);
+                
+            }
+            return size1;
+        }
+
+
+        public boolean contains(Object obj){
+            while(next() != null){
+                if(next().equals(obj)){
+                    return true;
+                }
+                return false;
+            }
+
+
+
+            private static boolean contains(Node start, Object obj){
+                
+            }
+
+
+
+        }
+
+
+
+
 
 
 

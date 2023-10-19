@@ -13,6 +13,7 @@ public class LinkedList
 
     private Node last;
     private int lastIndex;
+    public int count;
 
     /** 
         Constructs an empty linked list.
@@ -29,19 +30,41 @@ public class LinkedList
         Computes the size of the linked list
         @return the number of elements in the list
     */
-    public int size()
-    {
-        return currentSize;
+    public int size(){
+        while(hasNext()){
+            count++;
+        }
+
+
+
+        return count;
     }
+
+
+
+
+    private static int size(Node start){
+        int size1 = 0;
+        if(start != null){
+            size1 = start.next();
+            size(size1);
+            
+        }
+        return size1;
+    }
+
+    
 
     /**
         Checks if this linked list contains the given object.
         @param obj The object to be checked for.
         @return If the object exists in the list.
     */
-    public boolean contains(Object obj)
-    {
-        // ...
+    public boolean contains(Object obj){
+        if(first == null){
+            return false;
+        }
+        return contains(first,obj);
     }
 
     /**
@@ -51,7 +74,17 @@ public class LinkedList
     */
     public static boolean contains(Node start, Object obj)
     {
-        // ...
+       if(start.data.equals(obj)){
+        return true;
+       }
+       else if(start.next!=null){
+        return contains(start.next,obj);
+       }
+        else{
+            return false;
+        }
+        
+       
     }
 
     /**
