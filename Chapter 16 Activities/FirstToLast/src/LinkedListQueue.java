@@ -26,6 +26,13 @@ public class LinkedListQueue
 
         
         add(remove());
+        /**
+         * if(head!= tail)
+         * {tail.next = head;
+         * head = head.next;
+         * tail.next.next - null
+         * }
+         */
 
 
 

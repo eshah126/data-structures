@@ -30,6 +30,20 @@ public class LinkedListQueue
         temp.next = null;
         head = tail;
         tail = temp;
+
+
+        /*
+         * if(tail!=head){
+         * Node check = head;
+         * head = tail;
+         * while(check!=null)
+         * if (check.next == head)
+         * {
+         * check.next = null;
+         * tail = check;
+         * }
+         * }
+         */
         
 
         
