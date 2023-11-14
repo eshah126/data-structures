@@ -10,6 +10,8 @@ public class BinaryTree
     */
     public BinaryTree()
     {
+        this.root = null;
+       
          
     } 
 
@@ -19,7 +21,18 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData) 
     {
+        this.root = new Node();
+        this.root.data = rootData;
+        this.root.left = null;
+        this.root.right = null;
+
         
+    }
+    static class Node
+    {
+         public Object data;
+        public Node left;
+        public Node right;
     }
 
     /**
@@ -30,13 +43,15 @@ public class BinaryTree
     */
     public BinaryTree(Object rootData, BinaryTree left, BinaryTree right)
     {
+
+        this(rootData);
+        this.root.left = left.root;
+        this.root.right = right.root;
+
         
     }
     
-    static class Node
-    {
-        
-    }
+    
 
     /**
         Returns the height of the subtree whose root is the given node.
@@ -45,7 +60,15 @@ public class BinaryTree
     */
     private static int height(Node n)
     {
-        return 0;
+        if(n==null){
+            return 0;
+        }
+        else {
+            return 1+Math.max(BinaryTree.height(n.left),BinaryTree.height(n.right));
+
+        }
+
+     
     }
 
     /**
@@ -54,7 +77,7 @@ public class BinaryTree
     */
     public int height()
     {
-        return 0;
+        return BinaryTree.height(this.root);
     }
 
     /**
@@ -63,7 +86,7 @@ public class BinaryTree
     */
     public boolean isEmpty()
     {
-         return false;
+         return this.root==null;
     }
 
     /**
@@ -72,7 +95,7 @@ public class BinaryTree
     */
     public Object data()
     {
-         return null;
+         return this.root.data;
     }
     
     /**
@@ -81,7 +104,9 @@ public class BinaryTree
     */
     public BinaryTree left() 
     { 
-        return null;
+        BinaryTree subTree = new BinaryTree();
+        subtree.root = this.root.left;//whatever is the left is the left
+        return subTree;
     }
 
     /**
@@ -90,6 +115,26 @@ public class BinaryTree
     */
     public BinaryTree right() 
     { 
-        return null;
+        BinaryTree subTree = new BinaryTree();
+        subtree.root = this.root.left;//whatever is the left is the left
+        return subtree;
+        
+    }
+
+
+    public int countNodesWithOneChild(){
+
+        int sum = 0;
+        if(!isEmpty()){
+            
+            height()
+
+        }
+        
+
+
+
+        return sum;
+
     }
 }
