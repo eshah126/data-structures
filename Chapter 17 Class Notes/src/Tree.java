@@ -82,6 +82,11 @@ public int leafCount(Node n){//if size 0, return 0, caall the reccursive
         sum++;
     }
        
+    /**
+     * int sum = 0;
+     * 
+     * sum= sum+children.leafCount();
+     */
 
 
     return sum;
