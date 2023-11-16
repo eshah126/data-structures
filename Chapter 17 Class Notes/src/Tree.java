@@ -64,6 +64,42 @@ public class Tree
     
 }
 
+/*A visitor whose visist method is called for each visited node during a traversal */
+
+public interface Visistor(){
+    /*This method is called for each visit node being visisited
+     * @param dtat: The datat of the node being visisted 
+     */
+    void visit(Object data);
+
+
+
+}
+/*Traverses this tree in preorder
+ * @param v: the visitor to be invoked on each node
+ */
+public void preorder(Visistor V){}
+
+
+
+
+
+/*Traverses the tree with a given root in preorder
+ * param n: the root of the tree to travers
+ * @param v : the vis to be invoked on each side
+ */
+private static void preorder(Node n,Visistor v)
+{
+    if(n == null){
+        return;
+    }
+    v.visit(n.data);
+
+    for (Node child: n.children){
+        Tree.preorder(child, v);
+    }
+}
+
 
 public int leafCount(){
     if(root. children!=null){

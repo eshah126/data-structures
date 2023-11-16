@@ -90,6 +90,7 @@ public class BinarySearchTree
             Node newChild;
             if(tobeRovNode.left == null){
                 newChild = tobeRovNode.right;
+            }
                 else{
                     newChild = tobeRovNode.left;
                     
@@ -101,6 +102,37 @@ public class BinarySearchTree
                 parent.left = newChild;
             } else
             parent.right = newChild;
+            return;
+        }
+
+
+
+        //Case 3: remove a node with 2 children
+
+        //find the least element of the right subtree
+
+        Node leastParent = tobeRovNode;
+        Node least = tobeRovNode.right;
+        while(least.left != null){
+            leastParent = least;
+            least = least.left;//keeps gping down the left 
+
+        }
+
+        //Move the data so the node is deleted
+        tobeRovNode.data = least.data;
+
+
+
+
+        //unlink the least child
+        if(leastParent == tobeRovNode){
+            leastParent.right = least.right;
+        }//parent is now replaced with least
+
+
+        else{
+            leastParent.left = least.right;//channge the left of parent to the right 
         }
     }
     
@@ -109,6 +141,9 @@ public class BinarySearchTree
     */
     public void print()
     {   
+        print(this.root);
+        System.out.println();
+       
         
     }   
 
@@ -118,7 +153,13 @@ public class BinarySearchTree
     */
     private static void print(Node parent)
     {   
-        
+         if(parent == null){
+            return;
+        } 
+        print(parent.left);
+        //once we go  all the way down
+        System.out.println(parent.data + " ");
+        print(parent.right);
     }
 
     /**
