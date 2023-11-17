@@ -71,9 +71,8 @@ public class MorseCode
      */
     private static void addSymbol(char letter, String code)
     {
-        /*
-            !!! INSERT CODE HERE
-        */
+       codeMap.put(letter,code);
+       treeInsert(letter, code);.
     }
 
     /**
@@ -88,6 +87,8 @@ public class MorseCode
         /*
             !!! INSERT CODE HERE
         */
+         
+
     }
 
     /**
