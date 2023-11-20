@@ -11,6 +11,9 @@ public class MorseCode
     private static TreeMap<Character, String> codeMap;
     private static TreeNode decodeTree;
 
+
+    ///puting a 
+
     public static void main(String[] args)
     {
         MorseCode.start();  
@@ -72,7 +75,7 @@ public class MorseCode
     private static void addSymbol(char letter, String code)
     {
        codeMap.put(letter,code);
-       treeInsert(letter, code);.
+       treeInsert(letter, code);
     }
 
     /**
@@ -87,6 +90,23 @@ public class MorseCode
         /*
             !!! INSERT CODE HERE
         */
+        //building a tree
+        //where it go
+        de
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
          
 
     }
@@ -121,6 +141,9 @@ public class MorseCode
         /*
             !!! INSERT CODE HERE
         */
+
+
+
 
         return text.toString();
     }
