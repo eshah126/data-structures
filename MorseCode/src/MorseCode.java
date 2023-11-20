@@ -88,27 +88,24 @@ public class MorseCode
     private static void treeInsert(char letter, String code)
     {
         /*
-            !!! INSERT CODE HERE
+            1.) Check that the "code" did not run out of letters
+            2.) Check that the first char is a dot or a dah
+            3.) If the First char is a dot, setLEft to that char
+            4.) Do the opp for dash
+            5.) Keep going until the code has "run out of letters"
         */
-        //building a tree
-        //where it go
-        de
-        
+        while(code!=0)//1 {
+            if(code.charAt(0) != Dash && decodeTree !=null){//2
+                decodeTree.setRight(new TreeNode(' '));//3
+            decodeTree = decodeTree.getLeft();
 
+            if(code.charAt(0) != DOT && decodeTree!=null){//2
+                decodeTree.setLeft(new TreeNode(' '));//4
+            decodeTree = decodeTree.getLeft()
 
+                }
 
-
-
-
-
-
-
-
-
-
-
-         
-
+            }
     }
 
     /**
@@ -121,9 +118,7 @@ public class MorseCode
     {
         StringBuffer morse = new StringBuffer(400);
 
-        /*
-            !!! INSERT CODE HERE
-        */
+       while()
 
         return morse.toString();
     }
