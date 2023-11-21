@@ -94,14 +94,14 @@ public class MorseCode
             4.) Do the opp for dash
             5.) Keep going until the code has "run out of letters"
         */
-        while(code!=0)//1 {
-            if(code.charAt(0) != Dash && decodeTree !=null){//2
+        while(code.length() != 0)//1 {
+            if(code.charAt(0) != DASH && decodeTree !=null){//2
                 decodeTree.setRight(new TreeNode(' '));//3
             decodeTree = decodeTree.getLeft();
 
             if(code.charAt(0) != DOT && decodeTree!=null){//2
                 decodeTree.setLeft(new TreeNode(' '));//4
-            decodeTree = decodeTree.getLeft()
+            decodeTree = decodeTree.getLeft();
 
                 }
 
