@@ -148,9 +148,28 @@ public class MorseCode
         /*
             !!! INSERT CODE HERE
         */
+        TreeNode finalTree = decodeTree;
+
+        for (int i = 0; i < morse.length();i++)
+        {
+            if (morse.charAt(i) == ' ')
+            {
+                text.append(current.getValue());
+                finalTree = decodeTree;
+            }
+            if (morse.charAt(i) == DASH){ finalTree = finalTree.getRight();}
+            if (morse.charAt(i) == DOT{finalTree = finalTree.getLeft();}
+
+        }
+
+        
+
+        return text.toString();
+    }
+}
        
             
-        }
+        
         
 
 
