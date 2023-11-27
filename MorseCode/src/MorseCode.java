@@ -124,13 +124,13 @@ public class MorseCode
         while(text.length()  >1 ){
             if(text.charAt(0) == ' ')//checking for space{
                 morse.append(" ");//add space if there is a space in the morse code
-            }else{
             
+
             if(codeMap.get(text.substring(1).charAt(0)) !=null)//the node it will access, the first character 
-            
+
                 morse.append(codeMap.get(text.charAt(0)));
         }//end of else
-            }//end of loop
+            
 
         return morse.toString();
     }
@@ -154,30 +154,20 @@ public class MorseCode
         {
             if (morse.charAt(i) == ' ')
             {
-                text.append(current.getValue());
+                text.append(finalTree.getValue());
                 finalTree = decodeTree;
             }
             if (morse.charAt(i) == DASH){ finalTree = finalTree.getRight();}
-            if (morse.charAt(i) == DOT{finalTree = finalTree.getLeft();}
+            if (morse.charAt(i) == DOT){finalTree = finalTree.getLeft();}
 
         }
 
-        
-
-        return text.toString();
-    }
-}
-       
-            
-        
-        
-
-
 
 
         return text.toString();
     }
 }
+
 
 /**
  * BTreePrinter class courtesy of Karen Ge (@karenge1)
@@ -268,4 +258,3 @@ class BTreePrinter {
         return true;
     }
 }
-
