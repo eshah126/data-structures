@@ -97,18 +97,19 @@ public class MorseCode
         count = 0;
         TreeNode currTree = decodeTree;
         while(code.length() > 0  )//1 {
-            if(code.charAt(count) != DASH && decodeTree !=null){//2
+            if(code.charAt(count) == DASH && decodeTree !=null){//2
                 currTee.setRight(new TreeNode(' '));//3
                 currTree = currTree.getLeft();
             }
 
-            if(code.charAt(count) != DOT && decodeTree!=null){//2
+            if(code.charAt(count) == DOT && decodeTree!=null){//2
                 currTree.setLeft(new TreeNode(' '));//4
                 currTree = curTree.getLeft();
 
                 }
 
             }
+    count++
     }
 
     /**
