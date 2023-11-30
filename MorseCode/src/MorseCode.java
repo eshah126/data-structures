@@ -17,8 +17,10 @@ public class MorseCode
     public static void main(String[] args)
     {
         MorseCode.start();  
+        
         System.out.println(MorseCode.encode("Watson come here"));
         BTreePrinter.printNode(decodeTree);
+        System.out.println("hi");
     }
 
     public static void start()
@@ -94,23 +96,28 @@ public class MorseCode
             4.) Do the opp for dash
             5.) Keep going until the code has "run out of letters"
         */
-        count = 0;
+        int count = 0;
         TreeNode currTree = decodeTree;
-        while(code.length() > 0  )//1 {
-            if(code.charAt(count) == DASH && decodeTree !=null){//2
-                currTee.setRight(new TreeNode(' '));//3
+        while(count< code.length()-1  ){//1 {
+            if(code.charAt(count) == DASH && currTree.getRight() ==null){//2
+                currTree.setRight(new TreeNode(' '));//3
                 currTree = currTree.getLeft();
+               
             }
+             
 
-            if(code.charAt(count) == DOT && decodeTree!=null){//2
+            if(code.charAt(count) == DOT &&  currTree.getLeft() ==null){//2
                 currTree.setLeft(new TreeNode(' '));//4
-                currTree = curTree.getLeft();
+                currTree = currTree.getLeft();
 
                 }
+                count++;
 
             }
-    count++
-    }
+        }
+            
+    
+    
 
     /**
      * Converts text into a Morse code message.  Adds a space after a dot-dash
@@ -125,14 +132,17 @@ public class MorseCode
         //COnverting morse to text
         //have to check that the text is more than one character
         //have to use append for StringBuffer
-        while(text.length()  >1 ){
-            if(text.charAt(0) == ' ')//checking for space{
+        for(int i = 0; i <text.length()-1; i++){
+            if(text.charAt(0) == ' '){//checking for space{
                 morse.append(" ");//add space if there is a space in the morse code
+            }else{
+                morse.append((String) codeMap.get(Character.toUpperCase(text.charAt(i))) + " ");
+            }    
+
+            
             
 
-            if(codeMap.get(text.substring(1).charAt(0)) !=null)//the node it will access, the first character 
-
-                morse.append(codeMap.get(text.charAt(0)));
+            
         }//end of else
             
 
